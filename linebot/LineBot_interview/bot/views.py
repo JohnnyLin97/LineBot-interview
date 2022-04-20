@@ -9,8 +9,8 @@ from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage
 
-line_bot_api = LineBotApi("Channel_secret")  #在 line_developer取得
-parser = WebhookParser("Channel_access_token") #在 line_developer取得
+line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)  #在 line_developer取得
+parser = WebhookParser(settings.LINE_CHANNEL_SECRET) #在 line_developer取得
 
 @csrf_exempt
 def callback(request):
@@ -34,5 +34,6 @@ def callback(request):
                    TextSendMessage(text=event.message.text)
                 )
         return HttpResponse()
+
     else:
         return HttpResponseBadRequest()

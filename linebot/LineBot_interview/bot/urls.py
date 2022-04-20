@@ -1,6 +1,7 @@
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.urls import re_path
 from . import views
 
 urlpatterns = [
-    url('^callback/', views.callback),
+    re_path('^callback/', views.callback),
 ]

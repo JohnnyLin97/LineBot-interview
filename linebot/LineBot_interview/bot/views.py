@@ -7,7 +7,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
-from linebot.models import MessageEvent, TextSendMessage
+from linebot.models import MessageEvent, TextSendMessage, StickerMessage
+
+from LineBot_interview.msg_factory.confirm import get_confirm
+from LineBot_interview.msg_factory.carousel import get_menu
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)  #在 line_developer取得
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET) #在 line_developer取得
@@ -29,10 +32,27 @@ def callback(request):
 
         for event in events:
             if isinstance(event, MessageEvent):
-                line_bot_api.reply_message(
-                    event.reply_token,
-                   TextSendMessage(text=event.message.text)
-                )
+                request_content = event.message.text
+
+                if request_content == "no":
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        get_confirm()
+                    )
+                
+                elif request_content == "<confirm_yes>":
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        get_menu()
+                    )
+
+                else:
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        TextSendMessage(text=event.message.text)
+                    )
+
+
         return HttpResponse()
 
     else:

@@ -11,6 +11,9 @@ from linebot.models import MessageEvent, TextSendMessage, StickerMessage
 
 from LineBot_interview.msg_factory.confirm import get_confirm
 from LineBot_interview.msg_factory.carousel import get_menu
+from LineBot_interview.msg_factory.button import get_projects
+from LineBot_interview.msg_handler.comment import comment_det, comment_coming
+from LineBot_interview.msg_handler.menu import menu_handler
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)  #在 line_developer取得
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET) #在 line_developer取得
@@ -34,10 +37,16 @@ def callback(request):
             if isinstance(event, MessageEvent):
                 request_content = event.message.text
 
-                if request_content == "no":
+                if request_content == 'hey':
                     line_bot_api.reply_message(
                         event.reply_token,
                         get_confirm()
+                    )
+
+                elif request_content == "<confirm_no>":
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        StickerMessage(package_id = '8522', sticker_id = '16581287')
                     )
                 
                 elif request_content == "<confirm_yes>":
@@ -46,11 +55,14 @@ def callback(request):
                         get_menu()
                     )
 
-                else:
+                elif request_content[0:5] == '<menu':
                     line_bot_api.reply_message(
                         event.reply_token,
-                        TextSendMessage(text=event.message.text)
+                        menu_handler(request_content)
                     )
+
+
+  
 
 
         return HttpResponse()

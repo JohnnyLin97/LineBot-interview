@@ -11,8 +11,8 @@ from linebot.models import MessageEvent, TextSendMessage, StickerMessage
 
 from LineBot_interview.msg_factory.confirm import get_confirm
 from LineBot_interview.msg_factory.carousel import get_menu
-from LineBot_interview.msg_factory.button import get_projects
 from LineBot_interview.msg_handler.menu import menu_handler
+from LineBot_interview.msg_handler.projects_list import projects_handler
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)  #在 line_developer取得
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET) #在 line_developer取得
@@ -54,12 +54,17 @@ def callback(request):
                         get_menu()
                     )
 
-                elif request_content[0:5] == '<menu':
+                elif request_content[1:5] == 'menu':
                     line_bot_api.reply_message(
                         event.reply_token,
                         menu_handler(request_content)
                     )
 
+                elif request_content[1:9] == 'projects':
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        projects_handler(request_content)
+                    )
 
   
 

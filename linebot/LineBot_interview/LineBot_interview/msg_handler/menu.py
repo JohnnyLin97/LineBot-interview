@@ -12,9 +12,6 @@ def menu_handler(content):
     elif content == '<menu_intro>':
         return
     
-    elif content == '<menu_personality>':
-        return
-    
     elif content == '<menu_hobby>':
         f = open('LineBot_interview/response_data/hobby_info.txt', 'r', encoding='utf-8')
         return TextSendMessage(text=f.read())

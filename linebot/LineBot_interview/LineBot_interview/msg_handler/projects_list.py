@@ -1,5 +1,6 @@
 from linebot.models import TextSendMessage
 
+# Handling project user chose 
 def projects_handler(content):
     if content == '<projects_qsticker>':
         f = open('LineBot_interview/response_data/qsticker_info.txt', 'r', encoding='utf-8')

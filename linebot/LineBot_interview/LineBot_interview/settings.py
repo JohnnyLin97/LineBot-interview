@@ -27,8 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['true.loca.lt', 'localhost']
 
+# Line Tokens
 LINE_CHANNEL_ACCESS_TOKEN = 'B1m3pP6lMWxJthfY4F3AvUXiU6pC0QGy9eBHe1t/YZBnZjAEpprJrorCOaGHJnpIO2jB63STetJHVBzFQqNt7ZOkW44PgzjCNc+l/kzKhJC7nGtZ9C4QTtqvjRGzDUq+Z9gvxrHis69tHZ4GWwqMPgdB04t89/1O/w1cDnyilFU='
-
 LINE_CHANNEL_SECRET = '38a2f14ab5de6e878b2974a677c41aa9'
 
 # Application definition

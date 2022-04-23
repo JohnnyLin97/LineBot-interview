@@ -32,6 +32,7 @@ def callback(request):
         except LineBotApiError:
             return HttpResponseBadRequest()
 
+        # Get user's message, then assign to different handler
         for event in events:
             if isinstance(event, MessageEvent):
                 request_content = event.message.text
@@ -54,18 +55,21 @@ def callback(request):
                         StickerMessage(package_id = '8522', sticker_id = '16581287')
                     )
 
+                # Handle content of menu
                 elif request_content[1:5] == 'menu':
                     line_bot_api.reply_message(
                         event.reply_token,
                         menu_handler(request_content)
                     )
 
+                # Handle content of projects list 
                 elif request_content[1:9] == 'projects':
                     line_bot_api.reply_message(
                         event.reply_token,
                         projects_handler(request_content)
                     )
 
+                # Handle unknown message
                 else:
                     line_bot_api.reply_message(
                         event.reply_token,

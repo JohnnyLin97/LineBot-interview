@@ -3,11 +3,16 @@ from click import confirm
 from linebot.models import ConfirmTemplate, TemplateSendMessage, MessageTemplateAction
 from matplotlib.pyplot import text
 
+'''
+Confirm-Template message made here
+'''
+
+# Make message that confirm user's purpose
 def get_confirm():
     confirm_msg = TemplateSendMessage(
         alt_text = 'Confirm Template',
         template = ConfirmTemplate(
-            text = '想更了解我嗎?',
+            text = 'To know me better',
             actions = [
                 MessageTemplateAction(
                     label = 'Yes',

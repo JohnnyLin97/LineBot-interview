@@ -6,6 +6,11 @@ from linebot.models import (CarouselTemplate,
                             MessageTemplateAction, 
                             URITemplateAction)
 
+'''
+Carousel-Template message made here
+'''
+
+# Make menu carousel message
 def get_menu():
     menu_msg = TemplateSendMessage(
         alt_text = 'Menu',
@@ -13,6 +18,7 @@ def get_menu():
         template = CarouselTemplate(
             columns = [
 
+                # Self-introduction column
                 CarouselColumn(
                     title = 'Self-intro',
                     text = 'More about me',
@@ -24,6 +30,8 @@ def get_menu():
                         )
                     ]
                 ),
+
+                # Projects list column
                 CarouselColumn(
                     title = 'Projects',
                     text = 'Project Introduction',
@@ -35,9 +43,11 @@ def get_menu():
                         )
                     ]
                 ),
+
+                # Hobby
                 CarouselColumn(
                     title = 'Hobby',
-                    text = 'My Hobby',
+                    text = "Let's pick some easy topics",
                     thumbnail_image_url = links.HOBBY_ICON,
                     actions = [
                         MessageTemplateAction(
@@ -46,6 +56,8 @@ def get_menu():
                         )
                     ]
                 ),
+
+                # GitHub of this LineBot
                 CarouselColumn(
                     title = 'About Bot',
                     text = 'How I Built this LineBot',
@@ -57,9 +69,11 @@ def get_menu():
                         )
                     ]
                 ),
+
+                # Reason of choosing Line
                 CarouselColumn(
                     title = 'Why Line?',
-                    text = 'Why Line is my dream company',
+                    text = 'The reason why Line is my dream company',
                     thumbnail_image_url=links.LINE_ICON,
                     actions = [
                         MessageTemplateAction(

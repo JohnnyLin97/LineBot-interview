@@ -1,6 +1,7 @@
 from LineBot_interview.msg_factory.button import get_projects
 from linebot.models import TextSendMessage
 
+# Handling column user chose 
 def menu_handler(content):
     if content == '<menu_projects>':
         return get_projects()

@@ -1,0 +1,4 @@
+人工智慧金融挑戰賽由台新銀行主辦，使用客戶基本資料和消費紀錄預測是否購買特定金融產品
+前處理中以k-means做分群後，再用randomforest和MLP預測，最後獲得前五的準確率
+
+#Python #TensorFlow #NN

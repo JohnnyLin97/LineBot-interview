@@ -12,7 +12,6 @@ from linebot.models import MessageEvent, TextSendMessage, StickerMessage
 from LineBot_interview.msg_factory.confirm import get_confirm
 from LineBot_interview.msg_factory.carousel import get_menu
 from LineBot_interview.msg_factory.button import get_projects
-from LineBot_interview.msg_handler.comment import comment_det, comment_coming
 from LineBot_interview.msg_handler.menu import menu_handler
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)  #在 line_developer取得

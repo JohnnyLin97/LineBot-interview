@@ -42,16 +42,16 @@ def callback(request):
                         get_confirm()
                     )
 
+                elif request_content == "<confirm_yes>" or request_content == "menu":
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        get_menu()
+                    )
+
                 elif request_content == "<confirm_no>":
                     line_bot_api.reply_message(
                         event.reply_token,
                         StickerMessage(package_id = '8522', sticker_id = '16581287')
-                    )
-                
-                elif request_content == "<confirm_yes>":
-                    line_bot_api.reply_message(
-                        event.reply_token,
-                        get_menu()
                     )
 
                 elif request_content[1:5] == 'menu':
@@ -64,6 +64,12 @@ def callback(request):
                     line_bot_api.reply_message(
                         event.reply_token,
                         projects_handler(request_content)
+                    )
+
+                else:
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        TextSendMessage(text='Enter "hey" to wake me up\nEnter "menu" to get more info')
                     )
 
   

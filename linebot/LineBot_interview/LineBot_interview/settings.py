@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3le5ilj)bdt)+28^^r6ab65(v6ktosytjeeyt7mratb625%p!_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['true.loca.lt', 'localhost']
+ALLOWED_HOSTS = ['linebott.loca.lt', 'localhost']
 
 # Line Tokens
 LINE_CHANNEL_ACCESS_TOKEN = 'B1m3pP6lMWxJthfY4F3AvUXiU6pC0QGy9eBHe1t/YZBnZjAEpprJrorCOaGHJnpIO2jB63STetJHVBzFQqNt7ZOkW44PgzjCNc+l/kzKhJC7nGtZ9C4QTtqvjRGzDUq+Z9gvxrHis69tHZ4GWwqMPgdB04t89/1O/w1cDnyilFU='

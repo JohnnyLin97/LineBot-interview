@@ -36,7 +36,7 @@ def callback(request):
         for event in events:
             if isinstance(event, MessageEvent):
                 request_content = event.message.text
-
+                
                 if request_content == 'hey':
                     line_bot_api.reply_message(
                         event.reply_token,

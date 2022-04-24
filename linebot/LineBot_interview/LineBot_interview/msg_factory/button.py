@@ -11,7 +11,7 @@ def get_projects():
         alt_text = 'Projects List',
         template = ButtonsTemplate(
             title = 'My projects',
-            text = 'Followings are my projects, press button to have more details',
+            text = 'Press button to have more details',
             actions = [
                 MessageTemplateAction(
                     label = 'QSticker',

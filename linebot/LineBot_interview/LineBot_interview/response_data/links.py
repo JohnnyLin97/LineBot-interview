@@ -2,7 +2,7 @@
 
 LINEBOT_GITHUB = 'https://github.com/JohnnyLin97/LineBot-interview'
 
-SELF_INTRODUCTION = ''
+SELF_INTRODUCTION = 'https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/279031552_5184710144884391_8548689631315055061_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=730e14&_nc_ohc=miMy_Khe1QEAX8dL5dj&_nc_ht=scontent-tpe1-1.xx&oh=00_AT_M1zmp4TSdUoPDBnDI5HubZDTy3_THkllLEzVkC7E4vg&oe=626AC031'
 
 GITHUB_ICON = 'https://cdn-icons-png.flaticon.com/512/25/25231.png'
 PROJECT_ICON = 'https://cdn-icons-png.flaticon.com/512/268/268998.png'

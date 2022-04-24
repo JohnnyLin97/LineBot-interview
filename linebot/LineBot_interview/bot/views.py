@@ -13,6 +13,7 @@ from LineBot_interview.msg_factory.confirm import get_confirm
 from LineBot_interview.msg_factory.carousel import get_menu
 from LineBot_interview.msg_handler.menu import menu_handler
 from LineBot_interview.msg_handler.projects_list import projects_handler
+from LineBot_interview.msg_handler.unknown import not_text, unknown_text
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)  #在 line_developer取得
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET) #在 line_developer取得
@@ -35,9 +36,19 @@ def callback(request):
         # Get user's message, then assign to different handler
         for event in events:
             if isinstance(event, MessageEvent):
-                request_content = event.message.text
                 
-                if request_content == 'hey':
+                request_content = event.message.text
+
+                
+                # Handle message that isn't text
+                if request_content is None:
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        not_text()
+                    )
+
+                
+                elif request_content == 'hey':
                     line_bot_api.reply_message(
                         event.reply_token,
                         get_confirm()
@@ -69,11 +80,11 @@ def callback(request):
                         projects_handler(request_content)
                     )
 
-                # Handle unknown message
+                # Handle unknown text
                 else:
                     line_bot_api.reply_message(
                         event.reply_token,
-                        TextSendMessage(text='Enter "hey" to wake me up\nEnter "menu" to get more info')
+                        unknown_text()
                     )
 
   
